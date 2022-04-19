@@ -1,12 +1,28 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { StatusBar } from 'expo-status-bar'; 
+import { StyleSheet, Text, View,I18nManager } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { BottomTabs } from './src/navigation'
+import {combineReducers, applyMiddleware,createStore } from 'redux';
+import { Provider } from 'react-redux';
+import ReduxThunk from 'redux-thunk';
+I18nManager.forceRTL(false); // בחירת צד במקרה של אנגלית או עברית
+I18nManager.allowRTL(false); // בחירת צד במקרה של אנגלית או עברית
+
+import reducers from './store/reducers'
+const rootReducer = combineReducers({
+  allstores:reducers
+});
+const store = createStore(rootReducer,applyMiddleware(ReduxThunk)); // לבדוק למה מסומן בקו
+
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Provider>
+      <NavigationContainer>
+        <BottomTabs/>
+      </NavigationContainer>
+    </Provider>
   );
 }
 
