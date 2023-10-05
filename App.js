@@ -8,7 +8,7 @@ import { Provider } from 'react-redux';
 import ReduxThunk from 'redux-thunk';
 I18nManager.forceRTL(false); // בחירת צד במקרה של אנגלית או עברית
 I18nManager.allowRTL(false); // בחירת צד במקרה של אנגלית או עברית
-
+//abcd
 import reducers from './store/reducers'
 const rootReducer = combineReducers({
   allstores:reducers
